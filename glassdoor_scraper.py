@@ -41,7 +41,20 @@ def glassdoor_scraper(email, password, job_name, job_city):
     time.sleep(2)
     
     driver.find_element(By.XPATH, "//div[@class='mt-std d-flex justify-content-center']/a").click()
+    
+    time.sleep(2)
+    
+    #Get Jobs From Pages
+    job_page = job_df_creator(driver)
+    
+    #Return Df
+    df = pd.DataFrame(job_page)  
+    driver.close() 
+    return df 
+
      
+def job_df_creator(driver):    
+    
     works = driver.find_elements(By.XPATH,"//ul[@class='hover p-0  job-search-key-kgm6qi exy0tjh1']/li")
     
     time.sleep(5)
@@ -108,10 +121,11 @@ def glassdoor_scraper(email, password, job_name, job_city):
             }
         
         job_list.append(job_item)
+     
+    return job_list  
+        
     
-    df = pd.DataFrame(job_list)  
-    driver. close() 
-    return df  
+     
 
        
     
