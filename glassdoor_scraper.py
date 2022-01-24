@@ -12,7 +12,7 @@ import time as time
 import numpy as np
 
 
-def glassdoor_scraper(email, password, job_name, job_city):
+def scraper_method(email, password, job_name, job_city):
     
     driver = webdriver.Chrome(executable_path= "C:/Users/frost/Documents/glassdoor_scraper/chromedriver.exe") 
     driver.maximize_window()
